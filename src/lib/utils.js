@@ -19,5 +19,7 @@ export function usePrefersReducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-export const img = (seed, w = 800, h = 1000) =>
-  `https://picsum.photos/seed/${seed}/${w}/${h}`;
+export const img = (seed, w = 800, h = 1000) => {
+  if (seed.startsWith('http')) return seed;
+  return `https://picsum.photos/seed/${seed}/${w}/${h}`;
+};
