@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #0B0A1C;
+    color: #F3E8D8;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  ::selection {
+    background: rgba(200, 155, 60, 0.35);
+    color: #F3E8D8;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #0B0A1C; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(200, 155, 60, 0.3);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(200, 155, 60, 0.5); }
+}
+
+@layer components {
+  .btn-brass {
+    @apply px-6 py-3 rounded-sm bg-brass text-night-deep font-serif font-semibold text-base
+           tracking-wide transition-all duration-200 cursor-pointer
+           hover:bg-brass-soft hover:shadow-lg hover:shadow-brass/20 active:scale-[0.97];
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 rounded-sm border border-brass/40 text-brass font-serif font-medium text-base
+           tracking-wide bg-transparent transition-all duration-200 cursor-pointer
+           hover:bg-brass/10 hover:border-brass active:scale-[0.97];
+  }
+
+  .card-surface {
+    @apply bg-night-mid/60 border border-brass/10 rounded-lg overflow-hidden
+           transition-all duration-300 hover:border-brass/25
+           hover:shadow-xl hover:shadow-black/30;
+  }
+
+  .section-heading {
+    @apply font-serif text-3xl md:text-4xl font-semibold text-ivory tracking-wide;
+  }
+
+  .section-sub {
+    @apply font-serif text-base text-ivory-dim italic tracking-wider mt-2;
+  }
+
+  .folk-border {
+    border-image: repeating-linear-gradient(
+      90deg,
+      #C89B3C 0px, #C89B3C 4px,
+      transparent 4px, transparent 8px,
+      #2F5D58 8px, #2F5D58 12px,
+      transparent 12px, transparent 16px
+    ) 4;
+  }
+
+  .folk-pattern-bg {
+    background-image:
+      radial-gradient(circle at 20% 50%, rgba(47, 93, 88, 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 30%, rgba(200, 155, 60, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 50% 80%, rgba(90, 36, 31, 0.1) 0%, transparent 50%);
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 bg-night-deep/60 border border-brass/20 rounded-sm
+           text-ivory font-serif text-base placeholder:text-ivory-dim/50
+           focus:outline-none focus:border-brass/60 focus:ring-1 focus:ring-brass/30
+           transition-all duration-200;
+  }
+
+  /* Folk art decorative SVG pattern */
+  .madhubani-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Ccircle cx='40' cy='40' r='1.5' fill='%23C89B3C' fill-opacity='0.08'/%3E%3Ccircle cx='0' cy='0' r='1.5' fill='%23C89B3C' fill-opacity='0.08'/%3E%3Ccircle cx='80' cy='0' r='1.5' fill='%23C89B3C' fill-opacity='0.08'/%3E%3Ccircle cx='0' cy='80' r='1.5' fill='%23C89B3C' fill-opacity='0.08'/%3E%3Ccircle cx='80' cy='80' r='1.5' fill='%23C89B3C' fill-opacity='0.08'/%3E%3Cpath d='M20 20 Q40 10 60 20 Q70 40 60 60 Q40 70 20 60 Q10 40 20 20Z' fill='none' stroke='%23C89B3C' stroke-opacity='0.06' stroke-width='0.5'/%3E%3Cpath d='M40 0 L40 80 M0 40 L80 40' stroke='%232F5D58' stroke-opacity='0.04' stroke-width='0.5'/%3E%3C/svg%3E");
+  }
+
+  /* Watermark for product images */
+  .img-placeholder {
+    background: linear-gradient(135deg, #1E1B3A 0%, #14122A 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@layer utilities {
+  .elegant-ease {
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
